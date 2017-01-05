@@ -8,6 +8,7 @@
     perms/1,
     odds_and_evens/1
 ]).
+-include("records.hrl").
 
 sum(L)        -> sum(L, 0).
 
