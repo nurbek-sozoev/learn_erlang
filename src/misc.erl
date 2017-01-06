@@ -3,15 +3,15 @@
 -author({sozoev, nurbek}).
 -purpose("example").
 -export([
-    sum/1, 
-    for/3, 
-    map/2, 
-    qsort/1, 
+    sum/1,
+    for/3,
+    map/2,
+    qsort/1,
     pythagor/1,
     perms/1,
     odds_and_evens/1
 ]).
--include("headers/records.hrl").
+-include("./headers/records.hrl").
 
 sum(L)        -> sum(L, 0).
 
@@ -25,13 +25,13 @@ map(_, [])    -> [];
 map(F, [H|T]) -> [ F(H) | map(F, T) ].
 
 qsort([]) -> [];
-qsort([Pivot|T]) -> 
-qsort([X || X <- T, X < Pivot]) 
+qsort([Pivot|T]) ->
+qsort([X || X <- T, X < Pivot])
 ++ [Pivot] ++
 qsort([X || X <- T, X >= Pivot]).
 
 pythagor(N) -> [
-    {A,B,C} || 
+    {A,B,C} ||
     A <- lists:seq(1,N),
     B <- lists:seq(1,N),
     C <- lists:seq(1,N),
@@ -43,7 +43,7 @@ perms([]) -> [[]];
 perms(L)  -> [[H|T] || H <- L, T <- perms(L--[H])].
 
 odds_and_evens(L) -> odds_and_evens(L, [], []).
-odds_and_evens([H|T], Odds, Evens) -> 
+odds_and_evens([H|T], Odds, Evens) ->
 case (H rem 2) of
     1 -> odds_and_evens(T, [H|Odds], Evens);
     0 -> odds_and_evens(T, Odds, [H|Evens])
