@@ -1,0 +1,3 @@
+io:format("Running Erlang ~n").
+code:add_patha("./bin").
+code:add_patha("./src/headers").

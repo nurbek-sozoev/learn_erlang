@@ -1,15 +1,14 @@
-
+VPATH = src:src/headers
 MODULES = geometry misc shop shop_t hello
-
 ERL = erl -noshell
+BIN = bin
 
 all: compile
-	$(ERL) -s hello start -s init stop
 
 compile: ${MODULES:%=%.beam}
 
 %.beam : %.erl
-	erlc -W $<	
+	erlc -o $(BIN) -W $<
 
 clean: 
-	rm -rf *.beam erl_crash.dump
+	rm -rf $(BIN)/*.beam erl_crash.dump

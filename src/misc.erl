@@ -1,4 +1,7 @@
 -module(misc).
+-vsn("0.0.1").
+-author({sozoev, nurbek}).
+-purpose("example").
 -export([
     sum/1, 
     for/3, 
@@ -8,7 +11,7 @@
     perms/1,
     odds_and_evens/1
 ]).
--include("records.hrl").
+-include("headers/records.hrl").
 
 sum(L)        -> sum(L, 0).
 
