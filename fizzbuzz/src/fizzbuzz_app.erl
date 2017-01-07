@@ -8,7 +8,7 @@
 -behaviour(application).
 
 %% Application callbacks
--export([start/2, stop/1, area/1]).
+-export([start/2, stop/1, fizzbuzz/1]).
 
 %%====================================================================
 %% API
@@ -25,5 +25,12 @@ stop(_State) ->
 %% Internal functions
 %%====================================================================
 
-area({rectangle, Width, Height}) ->
-    Width * Height.
+fizzbuzz(Numbers)         -> fizzbuzz(Numbers, []).
+fizzbuzz([H|T], Result)   ->
+if
+    (H rem 3 =:= 0) and (H rem 5 =:= 0) -> fizzbuzz(T, ["FizzBuzz"] ++ Result);
+    H rem 3 =:= 0                       -> fizzbuzz(T, ["Fizz"] ++ Result);
+    H rem 5 =:= 0                       -> fizzbuzz(T, ["Buzz"] ++ Result);
+    true                                -> fizzbuzz(T, [H] ++ Result)
+end;
+fizzbuzz([], Result)     -> lists:reverse(Result).
