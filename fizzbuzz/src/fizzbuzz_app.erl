@@ -1,27 +1,29 @@
+%%%-------------------------------------------------------------------
+%% @doc fizzbuzz public API
+%% @end
+%%%-------------------------------------------------------------------
+
 -module(fizzbuzz_app).
 
 -behaviour(application).
 
 %% Application callbacks
--export([start/2, stop/1]).
--ifdef(TEST).
--include_lib("eunit/include/eunit.hrl").
--endif.
+-export([start/2, stop/1, area/1]).
 
-%% ===================================================================
-%% Application callbacks
-%% ===================================================================
+%%====================================================================
+%% API
+%%====================================================================
 
 start(_StartType, _StartArgs) ->
     fizzbuzz_sup:start_link().
 
+%%--------------------------------------------------------------------
 stop(_State) ->
     ok.
 
--ifdef(TEST).
+%%====================================================================
+%% Internal functions
+%%====================================================================
 
-simple_test() ->
-    ok = application:start(fizzbuzz),
-    ?assertNot(undefined == whereis(fizzbuzz_sup)).
-
--endif.
+area({rectangle, Width, Height}) ->
+    Width * Height.

@@ -1,12 +1,16 @@
 {application, fizzbuzz,
- [
-  {description, ""},
-  {vsn, "1"},
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
   {registered, []},
-  {applications, [
-                  kernel,
-                  stdlib
-                 ]},
   {mod, { fizzbuzz_app, []}},
-  {env, []}
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, []},
+  {links, []}
  ]}.
