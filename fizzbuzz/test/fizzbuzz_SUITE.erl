@@ -1,4 +1,4 @@
--module(common_SUITE).
+-module(fizzbuzz_SUITE).
 
 -compile(export_all).
 

@@ -21,16 +21,30 @@ start(_StartType, _StartArgs) ->
 stop(_State) ->
     ok.
 
+%%--------------------------------------------------------------------
+
+fizzbuzz([H|T]) -> [make_fizzbuzz(H)] ++ fizzbuzz(T);
+fizzbuzz([]) -> [].
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
-fizzbuzz(Numbers)         -> fizzbuzz(Numbers, []).
-fizzbuzz([H|T], Result)   ->
-if
-    (H rem 3 =:= 0) and (H rem 5 =:= 0) -> fizzbuzz(T, ["FizzBuzz"] ++ Result);
-    H rem 3 =:= 0                       -> fizzbuzz(T, ["Fizz"] ++ Result);
-    H rem 5 =:= 0                       -> fizzbuzz(T, ["Buzz"] ++ Result);
-    true                                -> fizzbuzz(T, [H] ++ Result)
-end;
-fizzbuzz([], Result)     -> lists:reverse(Result).
+make_fizzbuzz(Number) ->
+    Fizz = fizz(Number), Buzz = buzz(Number),
+    if
+        Fizz =:= Buzz -> Number;
+        true          -> Fizz ++ Buzz
+    end.
+
+fizz(Number) ->
+    if
+        Number rem 3 =:= 0 -> "Fizz";
+        true               -> ""
+    end.
+
+buzz(Number) ->
+    if
+        Number rem 5 =:= 0 -> "Buzz";
+        true               -> ""
+    end.
